@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
+
+const token = 'VlP9cwH6cc7Kg2LsNPXpAvF6QNmgZn'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+    axios.get('https://cors-anywhere.herokuapp.com/https://live.devnimble.com/api/v1/contacts', config)
+  }, [])
 
   return (
     <>
